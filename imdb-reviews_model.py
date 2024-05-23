@@ -69,24 +69,3 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"\nPrecisión del modelo: {accuracy:.4f}\n")
 print("Clasificación Reporte:\n", classification_report(y_test, y_pred))
 #print("Matriz de Confusión:\n", confusion_matrix(y_test, y_pred))
-
-"""
-# Función de predicción de una nueva reseña
-def predict_sentiment(review):
-    review = clean_text(review)
-    review_seq = tokenizer.texts_to_sequences([review])
-    review_padded = pad_sequences(review_seq, maxlen=max_length, padding='post', truncating='post')
-    predicted_sentiment = (model.predict(review_padded) > 0.5).astype("int32")[0][0]
-    return "Positiva" if predicted_sentiment == 1 else "Negativa"
-
-# Ejemplo de predicción reseña positiva
-new_review = "This movie was fantastic! loved the acting and the plot."
-print(f"Predecir sentimiento de la siguiente reseña: {new_review}")
-print(f"La reseña es: {predict_sentiment(new_review)}")
-
-# Ejemplo de predicción reseña negativa
-new_review = "This movie was awful, very bad. Do not watch it."
-print(f"Predecir sentimiento de la siguiente reseña: {new_review}")
-print(f"La reseña es: {predict_sentiment(new_review)}")
-
-"""
