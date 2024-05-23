@@ -51,20 +51,17 @@ def clean_text(text):
     text = text.lower()  # Convertir a minúsculas
     return text
 
-
 # Definir una función para predecir el sentimiento de una reseña
 def predict_sentiment(review):
     review_cleaned = clean_text(review)
     review_seq = tokenizer.texts_to_sequences([review_cleaned])
     review_padded = pad_sequences(review_seq, maxlen=max_length, padding='post', truncating='post')
     prediction = model.predict(review_padded)
-    print(f"Prediction: {prediction}")
-    #predicted_sentiment = (prediction > 0.5).astype("int32")[0][0]
-    #return "Positiva" if predicted_sentiment == 1 else "Negativa"
+    #print(f"Prediction: {prediction}")
     if prediction > 0.5:
         return "Positiva"
     elif prediction > 0.25:
-        return "Neutral o indefinida"
+        return "Indefinida"
     else:
         return "Negativa"
     
